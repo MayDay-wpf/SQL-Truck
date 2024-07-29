@@ -3,6 +3,7 @@
 </p>
 <h1 align="center">SQL-Truck</h1>
 <p align="center"><strong>任何 SQL 转换到任何 SQL</strong></p>
+<p align="center">基于LLM</p>
 
 ---
  [英文](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README.md) |[中文](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README_zh.md)
