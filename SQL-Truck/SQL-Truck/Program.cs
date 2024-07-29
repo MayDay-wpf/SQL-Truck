@@ -10,7 +10,9 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.WebHost.ConfigureKestrel((context, options) =>
+        {
+        });
         // Add services to the container.
         builder.Services.AddControllersWithViews();
         // 注册AI服务
