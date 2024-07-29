@@ -3,6 +3,7 @@
 </p>
 <h1 align="center">SQL-Truck</h1>
 <p align="center"><strong>Any SQL To Any SQL</strong></p>
+<p align="center">Based on Large Language Models</p>
 
 ---
  [English](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README.md) |[中文](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README_zh.md)
