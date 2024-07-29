@@ -6,6 +6,8 @@
 
 ---
  [English](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README.md) |[中文](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README_zh.md)
+
+**Live View**:  [sql.aibotpro.cn](https://sql.aibotpro.cn/)
  
 **SQL-Truck** is a versatile tool designed to convert SQL queries seamlessly between various SQL dialects. Built using .NET 6 and styled with Bootstrap, this project focuses on providing robust, scalable, and easy-to-use solutions for managing multiple SQL dialects across different database systems.
 
