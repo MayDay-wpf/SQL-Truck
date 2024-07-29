@@ -6,6 +6,8 @@
 
 ---
  [英文](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README.md) |[中文](https://github.com/MayDay-wpf/SQL-Truck/blob/main/README_zh.md)
+
+ **在线预览**:  [sql.aibotpro.cn](https://sql.aibotpro.cn/)
  
 **SQL-Truck** 是一个多功能工具，旨在在不同的 SQL 方言之间无缝转换 SQL 查询。此项目使用 .NET 6 构建，并使用 Bootstrap 进行样式设计，重点是提供强大、可扩展且易于使用的解决方案，用于管理不同数据库系统中的多种 SQL 方言。
 
