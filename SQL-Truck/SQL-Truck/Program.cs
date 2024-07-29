@@ -1,3 +1,4 @@
+﻿using AIService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,7 +13,8 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-
+        // 注册AI服务
+        builder.Services.AddScoped<IAIService, AIServer>();
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

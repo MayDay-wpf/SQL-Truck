@@ -1,31 +1,180 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+}
+
+body, html {
+    height: 100%;
 }
 
 body {
-  margin-top: 20px;
-  background-color: #f4f4f4;
+    margin-top: 20px;
+    background-color: #f4f4f4;
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
 .header {
-  margin-bottom: 30px;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
+
 .logo-img {
-  height: 80px;
-  padding: 10px;
+    height: 100px;
+    padding: 10px;
 }
+
 .btn-lang-switch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#switchBtn {
+    margin: 10px auto;
+}
+
+#inputLabel {
+    font-size: 18px;
+    background-color: #13227a;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#selectTitle {
+    font-size: 18px;
+    background-color: #5e438f;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#selectBox {
+    padding: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: center; /* Centers items horizontally */
+    gap: 10px; /* Adds space between items */
+}
+
+.checkbox-item {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 150px; /* Fixed width for uniform boxes */
+    display: flex;
+    align-items: center; /* Vertically centering the check and content */
+    flex-direction: column; /* Ensures layout is consistent on smaller screens */
+    border-radius: 10px;
+}
+
+.form-check-input {
+    margin-bottom: 10px; /* Space between checkbox and content */
+}
+
+.logo-content {
+    display: flex;
+    flex-direction: column; /* Stacks logo and name vertically */
+    align-items: center; /* Centers horizontally in the right section */
+}
+
+.database-logo {
+    width: 40px; /* Adjust size as necessary */
+    height: auto;
+}
+
+.database-name {
+    font-size: 12px; /* Adjust size as necessary */
+}
+
+@media (max-width: 600px) {
+    .checkbox-item {
+        width: 100%; /* Full width on small screens */
+        flex-direction: row; /* Logo and name next to each other on small screens */
+        justify-content: start; /* Aligns items to the start on small screens */
+    }
+
+    .form-check-input {
+        margin-right: 10px; /* Space between checkbox and content */
+        margin-bottom: 0; /* Removes bottom margin on small screens */
+    }
+
+    .logo-content {
+        flex-direction: column; /* Ensures logo and name stack vertically on small screens */
+    }
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1050;
+    display: none;
+}
+
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1051;
+    display: none;
+}
+
+.CodeMirror {
+    height: auto;
+    resize: vertical;
+    overflow: auto;
+    min-height: 300px;
+    border-radius: 10px;
+}
+
+.databaseName {
+    font-size: 18px;
+    background-color: #689d38;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.code-lang-label-container {
+    border-radius: 5px 5px 0 0;
+    padding: 3px;
+}
+
+.copy-container {
+    border-radius: 0 0 5px 5px;
 }
