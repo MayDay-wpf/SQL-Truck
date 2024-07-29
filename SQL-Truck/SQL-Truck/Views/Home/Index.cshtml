@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL语句转换工具</title>
-    <link href="/css/site.css" rel="stylesheet"/>
-    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/js/site.js"></script>
@@ -18,79 +18,82 @@
             background-color: #f8f9fa;
             padding: 10px 0;
         }
+
         .logo-img {
             height: 60px;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <header class="header text-center position-relative">
-        <img src="/static/images/SQL.png" alt="SQL Tool Logo" class="logo-img">
-        <button class="btn btn-sm btn-secondary btn-lang-switch" onclick="switchLanguage()"><span id="langSwitchText">English</span></button>
-    </header>
-    <div>
-        <h2 class="text-center" id="mainTitle">SQL语句转换工具</h2>
-        <div class="form-group">
-            <label for="sqlInput" id="inputLabel">输入SQL语句:</label>
-            <textarea class="form-control" id="sqlInput" rows="4" placeholder="请输入SQL语句..."></textarea>
+    <div class="container">
+        <header class="header text-center position-relative">
+            <img src="/static/images/SQL.png" alt="SQL Tool Logo" class="logo-img">
+            <button class="btn btn-sm btn-secondary btn-lang-switch" onclick="switchLanguage()"><span id="langSwitchText">English</span></button>
+        </header>
+        <div>
+            <h2 class="text-center" id="mainTitle">SQL语句转换工具</h2>
+            <div class="form-group">
+                <label for="sqlInput" id="inputLabel">输入SQL语句:</label>
+                <textarea class="form-control" id="sqlInput" rows="4" placeholder="请输入SQL语句..."></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" id="switchBtn" onclick="translateSQL()">转换</button>
         </div>
-        <button type="button" class="btn btn-primary" onclick="translateSQL()">转换</button>
+        <div id="results" class="mt-4">
+            <h4 id="resultTitle">转换结果:</h4>
+            <ul id="resultList" class="list-unstyled">
+            </ul>
+        </div>
     </div>
-    <div id="results" class="mt-4">
-        <h4 id="resultTitle">转换结果:</h4>
-        <ul id="resultList" class="list-unstyled">
-        </ul>
-    </div>
-</div>
 
-<script>
-    function switchLanguage() {
-        var currentLang = localStorage.getItem('lang') || 'zh-CN';
-        if(currentLang === 'en-US') {
-            localStorage.setItem('lang', 'zh-CN');
-            setLanguage('zh-CN');
-        } else {
-            localStorage.setItem('lang', 'en-US');
-            setLanguage('en-US');
-        }
-    }
-
-    function setLanguage(lang) {
-        if(lang === 'en-US') {
-            $('#langSwitchText').text('中文');
-            $('#mainTitle').text('SQL Statement Conversion Tool');
-            $('#inputLabel').text('Enter SQL Statement:');
-            $('#resultTitle').text('Results:');
-            $('#sqlInput').attr('placeholder', 'Please enter SQL statement...');
-        } else {
-            $('#langSwitchText').text('English');
-            $('#mainTitle').text('SQL语句转换工具');
-            $('#inputLabel').text('输入SQL语句:');
-            $('#resultTitle').text('转换结果:');
-            $('#sqlInput').attr('placeholder', '请输入SQL语句...');
-        }
-    }
-
-    $(document).ready(function() {
-        var savedLang = localStorage.getItem('lang') || 'zh-CN';
-        setLanguage(savedLang);
-    });
-
-    function translateSQL() {
-        var sql = $('#sqlInput').val();
-        // AJAX 请求转换API
-        $.post('/api/translate', { sql: sql }, function(data) {
-            $('#resultList').empty();
-            if (data.success && data.results) {
-                data.results.forEach(function(result) {
-                    $('#resultList').append($('<li>').text(result));
-                });
+    <script>
+        function switchLanguage() {
+            var currentLang = localStorage.getItem('lang') || 'zh-CN';
+            if (currentLang === 'en-US') {
+                localStorage.setItem('lang', 'zh-CN');
+                setLanguage('zh-CN');
             } else {
-                $('#resultList').append($('<li>').text("转换失败或无结果"));
+                localStorage.setItem('lang', 'en-US');
+                setLanguage('en-US');
             }
+        }
+
+        function setLanguage(lang) {
+            if (lang === 'en-US') {
+                $('#langSwitchText').text('中文');
+                $('#mainTitle').text('SQL Statement Conversion Tool');
+                $('#inputLabel').text('Enter SQL Statement:');
+                $('#resultTitle').text('Results:');
+                $('#sqlInput').attr('placeholder', 'Please enter SQL statement...');
+                $('#switchBtn').text('Convert');
+            } else {
+                $('#langSwitchText').text('English');
+                $('#mainTitle').text('SQL语句转换工具');
+                $('#inputLabel').text('输入SQL语句:');
+                $('#resultTitle').text('转换结果:');
+                $('#sqlInput').attr('placeholder', '请输入SQL语句...');
+                $('#switchBtn').text('转换');
+            }
+        }
+
+        $(document).ready(function () {
+            var savedLang = localStorage.getItem('lang') || 'en-US';
+            setLanguage(savedLang);
         });
-    }
-</script>
+
+        function translateSQL() {
+            var sql = $('#sqlInput').val();
+            // AJAX 请求转换API
+            $.post('/api/translate', { sql: sql }, function (data) {
+                $('#resultList').empty();
+                if (data.success && data.results) {
+                    data.results.forEach(function (result) {
+                        $('#resultList').append($('<li>').text(result));
+                    });
+                } else {
+                    $('#resultList').append($('<li>').text("转换失败或无结果"));
+                }
+            });
+        }
+    </script>
 </body>
 </html>
