@@ -1,0 +1,31 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-top: 20px;
+  background-color: #f4f4f4;
+}
+.header {
+  margin-bottom: 30px;
+}
+.logo-img {
+  height: 80px;
+  padding: 10px;
+}
+.btn-lang-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
