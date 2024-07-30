@@ -22,10 +22,11 @@ public class HomeController : Controller
             {
                 success = false
             });
-        string systemPrompt = @$"# 你是一个数据库专家，你的工作是将用户提供的SQL语句修改为指定数据库类型的SQL语句。这几种类型请你全部转换：{string.Join(", ", databasesName)}
-                                 # 任务：根据用户输入的SQL语句和指定的数据库类型，转换SQL语句以适应该类型的数据库。
-                                 # 输出应以JSON格式返回，格式为List<AIResultDto>，请必须返回一个JSON数组，其中每个AIResultDto包含数据库名称和修改后的SQL语句，SQL语句请使用markdown代码块包裹。
-                                 # AIResultDto是一个类，定义如下:
+        string systemPrompt = @$"# You are a database expert, and your job is to modify SQL statements provided by users to fit specific database types. Please convert for all these types: {{string.Join("", "", databasesName)}}
+                                 # Task 1: Based on the SQL statement input by the user and the specified database type, transform the SQL statement to adapt to that database type.
+                                 # Task 2: Refuse to answer any questions outside of SQL statement conversion, including but not limited to chats, programming, translation, mathematics, law, finance, history, politics.
+                                 # The output should be returned in JSON format, formatted as a List<AIResultDto>. You must return a JSON array where each AIResultDto contains the database name and the modified SQL statement, which should be enclosed in markdown code blocks.
+                                 # AIResultDto is a class, defined as follows:
                                  ```csharp
                                  public class AIResultDto
                                  {{
@@ -33,7 +34,7 @@ public class HomeController : Controller
                                     public string SQL {{ get; set; }}
                                  }}
                                  ```
-                                  返回数据示例（JSON格式）:
+                                  Sample returned data (JSON format):
                                   ```json
                                   {{ 
                                      'AIResultDto':[
@@ -53,8 +54,8 @@ public class HomeController : Controller
                                   }}
                                   ```
                                   ";
-        string prompt = @$"# 待转换的SQL语句：{codeEditorValue}
-                           # 请提供我这几种数据库的SQL语句，以JSON数组方式发给我：{string.Join(", ", databasesName)}";
+        string prompt = @$"# The SQL statement to be transformed：{codeEditorValue}
+                           # Please provide me the SQL statements of these databases and send them to me in JSON array：{string.Join(", ", databasesName)}";
         var result = _aiservice.GetSQLConvert(systemPrompt, prompt);
         return Json(new
         {
